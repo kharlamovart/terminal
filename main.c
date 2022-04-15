@@ -39,7 +39,7 @@ int main()
         {
             //мы в дочернем процессе
             //заменяем его на новый
-            exec_err = execvp(Input, Input, 0);
+            exec_err = execlp("ps", "ps", "ax", 0);
             if(exec_err == -1)
             {
                 printf("Process didn't launch");
