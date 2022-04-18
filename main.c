@@ -43,19 +43,11 @@ int main()
         //выход из терминала
         if(strncmp(Input, "kill", 5) == 0)
             break;
-        //запускаем дочерний процесс
-        child_pid = fork();
-	
-        if(child_pid == -1)
-        {
-            printf("Can't start new process\n");
-            return 1;
-        }
+         char input_2[255];
+        strcpy(input_2, Input);
         //считаем кол-во слов в строке
         num_of_words = word_count(Input);
         //создаем копию входной строки
-        char input_2[255];
-        strcpy(input_2, Input);
 
         // printf("%d\n", num_of_words);  
         //выделяем память для слов
@@ -75,10 +67,20 @@ int main()
             buf = strtok(NULL, " ");
             //printf("%s\n", input_div[num_of_words-1]);
         }
+        
+        //запускаем дочерний процесс
+        child_pid = fork();
+	
+        if(child_pid == -1)
+        {
+            printf("Can't start new process\n");
+            return 1;
+        }
+       
         if(child_pid == 0)
         {
             //мы в дочернем процессe
-            //for(int i = 0; i < num_of_words; i++)
+            //or(int i = 0; i < num_of_words; i++)
             //{
             //    printf("%s\n", input_div[i]);
             //}          

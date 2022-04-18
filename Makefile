@@ -1,2 +1,3 @@
 all:
-	gcc main.c -o terminal -fsanitize=address
+	gcc main.c -o terminal
+ 
